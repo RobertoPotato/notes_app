@@ -37,6 +37,8 @@ class NoteWidget extends StatelessWidget {
             builder: (BuildContext context) => NoteDetails(
               heroTag: heroTag,
               imageUrl: imageUrl,
+              title: textTitle,
+              text: textContent,
             ),
           ),
         );
@@ -67,10 +69,9 @@ class NoteWidget extends StatelessWidget {
             child: TextContainer(
               title: textTitle,
               text: textContent,
-              height: height,
               width: textWidth,
               borderRadius: borderRadius,
-              elevation: textElevation,
+              elevation: textElevation, height: height,
             ),
           )
         ],

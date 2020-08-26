@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'main_screens/allMyNotes.dart';
 import 'main_screens/newNote.dart';
-import 'main_screens/noteDetails.dart';
 import 'constants.dart';
 import 'package:flutter/services.dart';
 
