@@ -6,12 +6,14 @@ class DescriptionTextContainer extends StatelessWidget {
   final double elevation;
   final double width;
   final String text;
+  final bool isTitle;
 
   DescriptionTextContainer(
       {@required this.borderRadius,
-        @required this.elevation,
-        this.width,
-        @required this.text});
+      @required this.elevation,
+      this.width,
+      @required this.text,
+      @required this.isTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +30,20 @@ class DescriptionTextContainer extends StatelessWidget {
             Flexible(
               child: Padding(
                 padding: const EdgeInsets.all(kWidgetPadding * 4),
-                child: Text(
-                  text,
-                  style: kPrimaryTextStyle.copyWith(height: 1.2),
-                ),
+                child: isTitle
+                    ? Center(
+                        child: Text(
+                          text,
+                          style: kPrimaryTextStyle.copyWith(
+                              fontSize: 20.0,
+                              color: kSecondaryColor,
+                              fontWeight: FontWeight.w800),
+                        ),
+                      )
+                    : Text(
+                        text,
+                        style: kPrimaryTextStyle.copyWith(height: 1.2),
+                      ),
               ),
             )
           ],

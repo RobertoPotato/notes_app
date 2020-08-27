@@ -24,13 +24,13 @@ class _NoteDetailsState extends State<NoteDetails> {
   });
 
   Activity goBack =
-      Activity(Icons.close, kSecondaryColor, 30.0, "Open previous page", () {
+      Activity(Icons.close, kAccentColor, 30.0, "Open previous page", () {
     print("Exiting");
   });
 
   //TODO check of this is favorite or not and toggle
   Activity toggleFavorite = Activity(
-      Icons.favorite_border, kSecondaryColor, 30.0, "Add to your favorites",
+      Icons.favorite_border, kAccentColor, 30.0, "Add to your favorites",
       () {
     print("Toggle favorite status");
   });
@@ -70,13 +70,25 @@ class _NoteDetailsState extends State<NoteDetails> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: kWidgetPadding + 4.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: kWidgetPadding + 4.0),
+                child: DescriptionTextContainer(
+                  text: widget.title,
+                  borderRadius: kBorderRadius * 4,
+                  elevation: kElevation,
+                  isTitle: true,
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.only(bottom: kWidgetPadding + 4.0),
                 child: DescriptionTextContainer(
                   text: widget.text,
                   borderRadius: kBorderRadius * 4,
                   elevation: kElevation,
+                  isTitle: false,
                 ),
-              )
+              ),
             ],
           ),
         ),
