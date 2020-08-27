@@ -18,22 +18,38 @@ class NoteDetails extends StatefulWidget {
 }
 
 class _NoteDetailsState extends State<NoteDetails> {
+  bool isFavorite = true;
+
+  _checkFavoriteStatus(isFav){
+    if(isFav == true){
+      return Icons.favorite;
+    } else {
+      return Icons.favorite_border;
+    }
+
+  }
   Activity addNote =
-      Activity(Icons.add, kSecondaryColor, 30.0, "Add new note", () {
+      Activity(Icons.add, kSecondaryColor, 36.0, "Add new note", () {
     print("Adding new activity");
   });
 
   Activity goBack =
-      Activity(Icons.close, kAccentColor, 30.0, "Open previous page", () {
+      Activity(Icons.close, kSecondaryColor, 36.0, "Close current page", () {
     print("Exiting");
   });
 
   //TODO check of this is favorite or not and toggle
   Activity toggleFavorite = Activity(
-      Icons.favorite_border, kAccentColor, 30.0, "Add to your favorites",
+      Icons.favorite, kSecondaryColor, 36.0, "Add to your favorites",
       () {
     print("Toggle favorite status");
   });
+
+  Activity info = Activity(
+    Icons.info_outline, kPastelBlueHighlight, 36.0, "Info", (){
+      print("Show info prompt");
+  }
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +83,7 @@ class _NoteDetailsState extends State<NoteDetails> {
                   addItem: addNote,
                   goBack: goBack,
                   toggleFavorite: toggleFavorite,
+                  info: info
                 ),
               ),
               Padding(

@@ -35,9 +35,10 @@ class DescriptionTextContainer extends StatelessWidget {
                         child: Text(
                           text,
                           style: kPrimaryTextStyle.copyWith(
-                              fontSize: 20.0,
-                              color: kSecondaryColor,
-                              fontWeight: FontWeight.w800),
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            height: 1.2,
+                          ),
                         ),
                       )
                     : Text(

@@ -13,6 +13,7 @@ class ActivityPanel extends StatelessWidget {
   final Activity addItem;
   final Activity goBack;
   final Activity toggleFavorite;
+  final Activity info;
 
   ActivityPanel(
       {@required this.borderRadius,
@@ -24,7 +25,8 @@ class ActivityPanel extends StatelessWidget {
       @required this.iconColor,
       @required this.addItem,
       @required this.goBack,
-      @required this.toggleFavorite});
+      @required this.toggleFavorite,
+      @required this.info});
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +45,22 @@ class ActivityPanel extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              //Panel Help
+              Container(
+                child: InkWell(
+                  onTap: info.onTap,
+                  child: Tooltip(
+                    preferBelow: false,
+                    message: info.hint,
+                    child: Icon(
+                      info.icon,
+                      size: info.iconSize,
+                      color: info.iconColor,
+                    ),
+                  ),
+                ),
+              ),
+              //Favorite toggle
               Container(
                 child: InkWell(
                   onTap: toggleFavorite.onTap,
@@ -57,6 +75,7 @@ class ActivityPanel extends StatelessWidget {
                   ),
                 ),
               ),
+              //Close Page
               Container(
                 child: InkWell(
                   onTap: () {
@@ -73,6 +92,7 @@ class ActivityPanel extends StatelessWidget {
                   ),
                 ),
               ),
+              //Add a new item to note
               Container(
                 child: InkWell(
                   onTap: addItem.onTap,

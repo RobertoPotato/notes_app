@@ -7,6 +7,8 @@ const kUserId = 10;
 const kPrimaryColor = Color(0xFF0E3A53); //Colors.teal;
 const kAccentColor = Color(0xFFF2552C);
 const kSecondaryColor = Color(0xFFBF1932);
+const kPastelBlueHighlight = Colors.lightBlueAccent; //TODO change to a pastel color
+
 
 //Measurement values
 const kElevation = 4.0;
