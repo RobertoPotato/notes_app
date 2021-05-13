@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notty/constants.dart';
-import 'package:notty/components/activityClasses.dart';
+import 'package:notty/models/activity_model.dart';
 
 class ActivityPanel extends StatelessWidget {
   final double borderRadius;
@@ -11,22 +11,21 @@ class ActivityPanel extends StatelessWidget {
   final IconData icon;
   final Color iconColor;
   final Activity addItem;
-  final Activity goBack;
+  final Activity share;
   final Activity toggleFavorite;
-  final Activity info;
 
-  ActivityPanel(
-      {@required this.borderRadius,
-      @required this.elevation,
-      @required this.height,
-      this.width,
-      @required this.iconSize,
-      @required this.icon,
-      @required this.iconColor,
-      @required this.addItem,
-      @required this.goBack,
-      @required this.toggleFavorite,
-      @required this.info});
+  ActivityPanel({
+    @required this.borderRadius,
+    @required this.elevation,
+    @required this.height,
+    this.width,
+    @required this.iconSize,
+    @required this.icon,
+    @required this.iconColor,
+    @required this.addItem,
+    @required this.share,
+    @required this.toggleFavorite,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -45,21 +44,6 @@ class ActivityPanel extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              //Panel Help
-              Container(
-                child: InkWell(
-                  onTap: info.onTap,
-                  child: Tooltip(
-                    preferBelow: false,
-                    message: info.hint,
-                    child: Icon(
-                      info.icon,
-                      size: info.iconSize,
-                      color: info.iconColor,
-                    ),
-                  ),
-                ),
-              ),
               //Favorite toggle
               Container(
                 child: InkWell(
@@ -83,11 +67,11 @@ class ActivityPanel extends StatelessWidget {
                   },
                   child: Tooltip(
                     preferBelow: false,
-                    message: goBack.hint,
+                    message: share.hint,
                     child: Icon(
-                      goBack.icon,
-                      size: goBack.iconSize,
-                      color: goBack.iconColor,
+                      share.icon,
+                      size: share.iconSize,
+                      color: share.iconColor,
                     ),
                   ),
                 ),

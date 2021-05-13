@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:notty/main_screens/newNote.dart';
-import 'package:notty/constants.dart';
+import 'package:get/get.dart';
 import 'package:notty/components/noteWidget.dart';
+import 'package:notty/constants.dart';
+import 'package:notty/screens/new_note.dart';
 
-class MyNotes extends StatefulWidget {
+import 'new_note.dart';
+
+class Home extends StatefulWidget {
   static String id = "myNotes";
 
   @override
-  _MyNotesState createState() => _MyNotesState();
+  _HomeState createState() => _HomeState();
 }
 
-class _MyNotesState extends State<MyNotes> {
-  void _addNotePage() {
-    Navigator.pushNamed(context, NewNote.id);
-  }
-
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,37 +31,22 @@ class _MyNotesState extends State<MyNotes> {
                 heroTag: "hero",
                 textTitle: "Title",
                 textContent: kLoremLong,
-                height: 100.0,
-                textWidth: 240.0,
-                borderRadius: kBorderRadius * 2,
-                textElevation: kElevation,
                 imageUrl: kSampleImage,
                 isNetworkImage: true,
-                imageElevation: kElevation,
               ),
               NoteWidget(
                 heroTag: "hero2",
                 textTitle: "Title",
                 textContent: kLoremLong,
-                height: 100.0,
-                textWidth: 240.0,
-                borderRadius: kBorderRadius * 2,
-                textElevation: kElevation,
                 imageUrl: kSampleImage2,
                 isNetworkImage: true,
-                imageElevation: kElevation,
               ),
               NoteWidget(
                 heroTag: "hero3",
                 textTitle: "Title",
                 textContent: kLoremLong,
-                height: 100.0,
-                textWidth: 240.0,
-                borderRadius: kBorderRadius * 2,
-                textElevation: kElevation,
                 imageUrl: kSampleImage3,
                 isNetworkImage: true,
-                imageElevation: kElevation,
               ),
             ],
           ),
@@ -71,9 +55,14 @@ class _MyNotesState extends State<MyNotes> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: kPrimaryColor,
         splashColor: kAccentColor,
-        onPressed: _addNotePage,
+        onPressed: () {
+          Get.to(NewNote());
+        },
         tooltip: 'New note',
-        child: Icon(Icons.note_add, color: Colors.white,),
+        child: Icon(
+          Icons.note_add,
+          color: Colors.white,
+        ),
       ),
     );
   }

@@ -19,46 +19,42 @@ class TextContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      borderRadius: BorderRadius.circular(borderRadius),
-      elevation: elevation,
-      child: Container(
-        height: height,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(borderRadius),
-          color: kPrimaryColor,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-              vertical: kWidgetPadding, horizontal: kWidgetPadding + 4),
-          child: Row(
-            children: [
-              Container(
-                height: 100.0,
-                width: width,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: kHeaderTextStyle,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Flexible(
-                      child: Text(
-                        text,
-                        style: kPrimaryTextStyle,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
+    return Container(
+      height: height,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(borderRadius),
+        color: kPrimaryColor,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+            vertical: kWidgetPadding * 2, horizontal: kWidgetPadding * 2),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: kHeaderTextStyle,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              )
-            ],
-          ),
+                //TODO turn this to an emoji
+                Icon(
+                  Icons.face_rounded,
+                ),
+              ],
+            ),
+            Flexible(
+              child: Text(
+                text,
+                style: kPrimaryTextStyle,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
         ),
       ),
     );

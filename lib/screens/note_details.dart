@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:notty/components/activityPanel.dart';
+import 'package:notty/components/descriptionTextContainer.dart';
 import 'package:notty/components/imageContainer.dart';
 import 'package:notty/constants.dart';
-import 'package:notty/components/activityPanel.dart';
-import 'package:notty/components/activityClasses.dart';
-import 'package:notty/components/descriptionTextContainer.dart';
+import 'package:notty/models/activity_model.dart';
 
 class NoteDetails extends StatefulWidget {
   static String id = "noteDetails";
@@ -18,39 +18,6 @@ class NoteDetails extends StatefulWidget {
 }
 
 class _NoteDetailsState extends State<NoteDetails> {
-  bool isFavorite = true;
-
-  _checkFavoriteStatus(isFav){
-    if(isFav == true){
-      return Icons.favorite;
-    } else {
-      return Icons.favorite_border;
-    }
-
-  }
-  Activity addNote =
-      Activity(Icons.add, kSecondaryColor, 36.0, "Add new note", () {
-    print("Adding new activity");
-  });
-
-  Activity goBack =
-      Activity(Icons.close, kSecondaryColor, 36.0, "Close current page", () {
-    print("Exiting");
-  });
-
-  //TODO check of this is favorite or not and toggle
-  Activity toggleFavorite = Activity(
-      Icons.favorite, kSecondaryColor, 36.0, "Add to your favorites",
-      () {
-    print("Toggle favorite status");
-  });
-
-  Activity info = Activity(
-    Icons.info_outline, kPastelBlueHighlight, 36.0, "Info", (){
-      print("Show info prompt");
-  }
-  );
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -81,15 +48,15 @@ class _NoteDetailsState extends State<NoteDetails> {
                   iconSize: 30.0,
                   borderRadius: kBorderRadius * 4,
                   addItem: addNote,
-                  goBack: goBack,
                   toggleFavorite: toggleFavorite,
-                  info: info
+                  share: share,
                 ),
               ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: kWidgetPadding + 4.0),
                 child: DescriptionTextContainer(
+                  padding: kWidgetPadding * 3,
                   text: widget.title,
                   borderRadius: kBorderRadius * 4,
                   elevation: kElevation,
@@ -97,9 +64,9 @@ class _NoteDetailsState extends State<NoteDetails> {
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.only(bottom: kWidgetPadding + 4.0),
+                padding: const EdgeInsets.only(bottom: kWidgetPadding + 4.0),
                 child: DescriptionTextContainer(
+                  padding: kWidgetPadding * 3,
                   text: widget.text,
                   borderRadius: kBorderRadius * 4,
                   elevation: kElevation,
