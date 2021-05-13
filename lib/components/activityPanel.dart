@@ -6,7 +6,7 @@ class ActivityPanel extends StatelessWidget {
   final double borderRadius;
   final double elevation;
   final double height;
-  final double width;
+  final double? width;
   final double iconSize;
   final IconData icon;
   final Color iconColor;
@@ -15,16 +15,16 @@ class ActivityPanel extends StatelessWidget {
   final Activity toggleFavorite;
 
   ActivityPanel({
-    @required this.borderRadius,
-    @required this.elevation,
-    @required this.height,
+    required this.borderRadius,
+    required this.elevation,
+    required this.height,
     this.width,
-    @required this.iconSize,
-    @required this.icon,
-    @required this.iconColor,
-    @required this.addItem,
-    @required this.share,
-    @required this.toggleFavorite,
+    required this.iconSize,
+    required this.icon,
+    required this.iconColor,
+    required this.addItem,
+    required this.share,
+    required this.toggleFavorite,
   });
 
   @override
@@ -47,7 +47,9 @@ class ActivityPanel extends StatelessWidget {
               //Favorite toggle
               Container(
                 child: InkWell(
-                  onTap: toggleFavorite.onTap,
+                  onTap: () {
+                    toggleFavorite.onTap();
+                  },
                   child: Tooltip(
                     preferBelow: false,
                     message: toggleFavorite.hint,
@@ -79,7 +81,9 @@ class ActivityPanel extends StatelessWidget {
               //Add a new item to note
               Container(
                 child: InkWell(
-                  onTap: addItem.onTap,
+                  onTap: () {
+                    addItem.onTap();
+                  },
                   child: Tooltip(
                     preferBelow: false,
                     message: addItem.hint,

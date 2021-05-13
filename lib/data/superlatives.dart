@@ -2,8 +2,8 @@ List superlatives = [
   "a little",
   "modestly",
   "quite",
-  "suspiciously"
-      "very",
+  "suspiciously",
+  "very",
   "extremely",
   "fantastically",
   "ultimately",

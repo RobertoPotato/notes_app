@@ -5,17 +5,18 @@ class TextContainer extends StatelessWidget {
   final double borderRadius;
   final double elevation;
   final double height;
-  final double width;
+  final double? width;
   final String title;
   final String text;
 
-  TextContainer(
-      {@required this.borderRadius,
-      @required this.elevation,
-      @required this.height,
-      this.width,
-      @required this.title,
-      @required this.text});
+  TextContainer({
+    required this.borderRadius,
+    required this.elevation,
+    required this.height,
+    this.width,
+    required this.title,
+    required this.text,
+  });
 
   @override
   Widget build(BuildContext context) {

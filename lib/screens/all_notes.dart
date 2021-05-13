@@ -56,7 +56,7 @@ class _HomeState extends State<Home> {
         backgroundColor: kPrimaryColor,
         splashColor: kAccentColor,
         onPressed: () {
-          Get.to(NewNote());
+          Get.to(() => NewNote());
         },
         tooltip: 'New note',
         child: Icon(

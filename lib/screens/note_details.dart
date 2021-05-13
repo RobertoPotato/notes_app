@@ -4,15 +4,23 @@ import 'package:notty/components/descriptionTextContainer.dart';
 import 'package:notty/components/imageContainer.dart';
 import 'package:notty/constants.dart';
 import 'package:notty/models/activity_model.dart';
+import 'package:notty/models/note_model.dart';
 
 class NoteDetails extends StatefulWidget {
   static String id = "noteDetails";
   final String heroTag;
   final String imageUrl;
   final String title;
-  final String text;
+  final String date;
+  final List<Note> notes;
 
-  NoteDetails({@required this.heroTag, this.imageUrl, this.title, this.text});
+  NoteDetails({
+    required this.heroTag,
+    required this.imageUrl,
+    required this.title,
+    required this.date,
+    required this.notes,
+  });
   @override
   _NoteDetailsState createState() => _NoteDetailsState();
 }
@@ -32,7 +40,7 @@ class _NoteDetailsState extends State<NoteDetails> {
                   bottomLeftRad: kBorderRadius * 4,
                   bottomRightRad: kBorderRadius * 4,
                   elevation: kElevation,
-                  imageUrl: widget.imageUrl,
+                  imageSource: widget.imageUrl,
                   isNetworkImage: true,
                   height: 450.0,
                   width: double.infinity,
@@ -67,7 +75,7 @@ class _NoteDetailsState extends State<NoteDetails> {
                 padding: const EdgeInsets.only(bottom: kWidgetPadding + 4.0),
                 child: DescriptionTextContainer(
                   padding: kWidgetPadding * 3,
-                  text: widget.text,
+                  text: widget.title,
                   borderRadius: kBorderRadius * 4,
                   elevation: kElevation,
                   isTitle: false,

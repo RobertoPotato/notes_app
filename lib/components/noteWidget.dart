@@ -12,15 +12,15 @@ class NoteWidget extends StatelessWidget {
   final bool isNetworkImage;
   final String heroTag;
 
-  NoteWidget(
-      {@required this.textTitle,
-      @required this.textContent,
-      @required this.imageUrl,
-      @required this.isNetworkImage,
-      @required this.heroTag});
+  NoteWidget({
+    required this.textTitle,
+    required this.textContent,
+    required this.imageUrl,
+    required this.isNetworkImage,
+    required this.heroTag,
+  });
   @override
   Widget build(BuildContext context) {
-    const WIDTH = 240.0;
     const HEIGHT = 100.0;
     const ELEVATION = 4.0;
     const BORDER_RADIUS = 32.0;
@@ -39,7 +39,8 @@ class NoteWidget extends StatelessWidget {
                 heroTag: heroTag,
                 imageUrl: imageUrl,
                 title: textTitle,
-                text: textContent,
+                notes: [],
+                date: '',
               ),
             ),
           );
@@ -51,7 +52,7 @@ class NoteWidget extends StatelessWidget {
               child: Hero(
                 tag: heroTag,
                 child: ImageContainer(
-                  imageUrl: imageUrl,
+                  imageSource: imageUrl,
                   borderRadius: BORDER_RADIUS,
                   isNetworkImage: isNetworkImage,
                   elevation: ELEVATION,

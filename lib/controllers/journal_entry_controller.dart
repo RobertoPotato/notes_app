@@ -11,7 +11,7 @@ class JournalEntryController extends GetxController {
     update();
   }
 
-  IconData checkFavoriteStatus({bool isFav}) {
+  IconData checkFavoriteStatus({required bool isFav}) {
     if (isFav) {
       return Icons.favorite;
     } else {
