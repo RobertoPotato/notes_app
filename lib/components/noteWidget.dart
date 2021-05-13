@@ -5,6 +5,7 @@ import 'package:notty/screens/note_details.dart';
 
 import '../constants.dart';
 
+// TODO Dismissible swipe to EDIT or DELETE
 class NoteWidget extends StatelessWidget {
   final String textTitle;
   final String textContent;

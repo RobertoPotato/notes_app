@@ -7,9 +7,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:notty/components/descriptionTextContainer.dart';
 import 'package:notty/constants.dart';
+import 'package:notty/models/display_date_model.dart';
 import 'package:notty/models/note_model.dart';
 
-import '../components/imageContainer.dart';
 import '../constants.dart';
 
 class NewNote extends StatefulWidget {
@@ -157,19 +157,27 @@ class _NewNoteState extends State<NewNote> {
     }
   }
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
+  DisplayDate getCurrentDateTime() {
+    //TODO refactor to return date object
     DateTime now = new DateTime.now();
     String date = DateFormat('MM-yyyy').format(now);
     String time = DateFormat('hh:mm').format(now);
     String day = DateFormat('EEEE').format(now);
 
+    DisplayDate currDateTime =
+        new DisplayDate(dateTime: now, date: date, time: time, day: day);
+    return currDateTime;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    DisplayDate currentDateTime = getCurrentDateTime();
     setState(() {
-      _dateNow = "$day $date";
+      _dateNow = "${currentDateTime.day} ${currentDateTime.date}";
     });
-    print("$day $date at $time");
   }
 
   @override
@@ -222,16 +230,13 @@ class _NewNoteState extends State<NewNote> {
                 // Pick an Emoji to show how you're feeling
                 // Write what you are grateful for. Have list of notes
                 SliverToBoxAdapter(
-                  child: imageFile == null
-                      ? Container()
-                      : ImageContainer(
-                          borderRadius: kBorderRadius,
-                          imageSource: imageFile!,
-                          height: 120.0,
-                          elevation: kElevation,
-                          isNetworkImage: _isNetworkImage,
-                        ),
-                ),
+                    child: imageFile == null
+                        ? Container()
+                        : CoverImage(
+                            height: 200.0,
+                            isNetworkImage: _isNetworkImage,
+                            imageSource: imageFile!,
+                            borderRadius: kBorderRadius)),
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
@@ -334,7 +339,7 @@ class CoverImage extends StatelessWidget {
         image: DecorationImage(
             image: isNetworkImage
                 ? NetworkImage(imageSource)
-                : AssetImage(imageSource) as ImageProvider,
+                : FileImage(imageSource) as ImageProvider,
             // Refer: https://github.com/flutter/flutter/issues/77782
             fit: BoxFit.cover),
         borderRadius: BorderRadius.circular(borderRadius),
